@@ -24,11 +24,11 @@ int main()
     lua.open_libraries(sol::lib::base, sol::lib::package);
 
     using MyVec2D = MyVector2<float>;
-    MyVec2D myvec;
+    MyVec2D my_vec;
     // MyVector2 compiles fine
-    sol::usertype<MyVec2D> vec3_typ = lua.new_usertype<MyVec2D>("MyVec3D",
-                                                                sol::constructors<MyVec2D()>());
-    vec3_typ["x"] = &MyVec2D::x;
+    sol::usertype<MyVec2D> my_vec2_type = lua.new_usertype<MyVec2D>("MyVec2D",
+                                                                    sol::constructors<MyVec2D()>());
+    my_vec2_type["x"] = &MyVec2D::x;
 
     // magnum vector 2 does not compile
     using Vec2D = Magnum::Vector2;
